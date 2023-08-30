@@ -5,6 +5,7 @@ export type post = {
     category: string,
     id:string,
     post:string,
+    date: number
 }
 
 export type commentItemType = {

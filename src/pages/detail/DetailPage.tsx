@@ -36,7 +36,10 @@ export default function DetailPage(){
 return (
     <PageContainer>
 
-        <DetailContent title={detailData.title} content={detailData.content}/>
+        <DetailContent
+        title={detailData.title}
+        content={detailData.content}
+        date={detailData.date}/>
 
         {userState.userUid === detailData.userUid ?
         <DetailButton

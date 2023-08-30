@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 import { useNavigate } from "react-router-dom"
 import { useAppSelector } from "../stores/store"
 import { post } from "../types/dataTypes"
+import getDate from "../utils/getDate"
 
 const ContainerUl = styled.ul`
     width: 100%;
@@ -53,7 +54,7 @@ export default function ListUl(){
                     <span>
                         {item.title}
                     </span>
-                    <span>날짜</span>
+                    <span>{getDate(item.date)}</span>
                 </li>
                     )
                 })}

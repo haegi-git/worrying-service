@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import getDate from "../../utils/getDate"
 
 const Container = styled.div`
     width: 100%;
@@ -20,13 +21,14 @@ const Container = styled.div`
 type test = {
     title: string,
     content: string,
+    date: number
 }
 
-export default function DetailContent({title,content}:test){
+export default function DetailContent({title,content,date}:test){
     return(
         <Container>
             <h1>{title}1</h1>
-            <span>익명의 작성자 - 날짜</span>
+            <span>익명의 작성자 - {getDate(date)}</span>
             <p>{content}</p>
         </Container>
     )

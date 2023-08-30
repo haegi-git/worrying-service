@@ -6,6 +6,7 @@ import useDeleteBtn from "../../Hooks/useDeleteBtn";
 import { removeCommentData } from "../../stores/features/comment/commentDataSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import getDate from "../../utils/getDate";
 
 type DetailCommentUlType = {
     category: string | undefined,
@@ -53,7 +54,7 @@ export default function DetailCommentUl({
                     <li key={data.id}>
                         <div>
 
-                            <span>거북이 15:21</span>
+                            <span>거북이 {getDate(data.date)}</span>
 
                             <p>{data.comment}</p>
 

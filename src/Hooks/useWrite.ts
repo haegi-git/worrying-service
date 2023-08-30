@@ -12,9 +12,10 @@ type postWritePropsType = {
 
 type commentWritePropsType = {
     userState: userType,
-        commentValue: string,
-        detailCollection: string,
-        detailId: string,
+    commentValue: string,
+    detailCollection: string,
+    detailId: string,
+    date: number,
 }
 export default function useWrite(){
 
@@ -43,11 +44,13 @@ export default function useWrite(){
         commentValue,
         detailCollection,
         detailId,
+        date
     }:commentWritePropsType) =>{
         try{
             const docRef = await addDoc(collection(db,detailCollection,detailId,'comment'),{
                 comment: commentValue,
-                userUid: userState.userUid
+                userUid: userState.userUid,
+                date: date
             })
 
             return docRef

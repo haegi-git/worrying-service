@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 
 import { useAppSelector } from "../../stores/store";
 import { useNavigate } from "react-router-dom";
-import useWrite from "../../Hooks/useWriteBtn";
+import useWrite from "../../Hooks/useWrite";
 
 const Container = styled.div`
     width: 100%;

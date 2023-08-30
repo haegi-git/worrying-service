@@ -5,7 +5,7 @@ import { onChangeCommentValue } from "../../stores/features/comment/commentValue
 import { useAppDispatch, useAppSelector } from "../../stores/store"
 import DetailCommentUl from "./DetailCommentUl"
 import DetailCommentTextField from "./DetailCommentTextField"
-import useWrite from "../../Hooks/useWriteBtn"
+import useWrite from "../../Hooks/useWrite"
 
 type DetailCommentProps = {
     category: string,
@@ -69,6 +69,8 @@ export default function DetailComment({category,id}:DetailCommentProps){
 
     const createComment = useWrite()
 
+    const timestamp = Date.now()
+
     const handelCreateBtn = async () =>{
 
         if(commentValue.length === 0){
@@ -78,11 +80,13 @@ export default function DetailComment({category,id}:DetailCommentProps){
                 detailCollection:category,
                 detailId:id,
                 commentValue: commentValue,
-                userState: userState
+                userState: userState,
+                date: timestamp,
                 })
                 const newComment = {
                     comment: commentValue,
                     userUid: userState.userUid,
+                    date: timestamp
                 }
                 dispatch(setCommentData([...commentData,newComment])) // 댓글 작성하면 스토어에 임의로 바로 추가해주는 코드
                 dispatch(onChangeCommentValue('')) // 댓글 작성 시 인풋 초기화
