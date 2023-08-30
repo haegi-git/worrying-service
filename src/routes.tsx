@@ -9,6 +9,7 @@ import SecretPage from "./pages/secret/SecretPage";
 import WritePage from "./pages/write/WritePage";
 import AnonymousPage from "./pages/anonymous/AnonymousPage";
 import HomePage from "./pages/home/HomePage";
+import MyPage from "./pages/mypage/MyPage";
 
 const routes = [
     {
@@ -21,6 +22,7 @@ const routes = [
             {path: '/secret', element: <SecretPage/>},
             {path: '/free', element: <FreePage/>},
             {path: '/write', element: <WritePage/>},
+            {path: '/mypage', element: <MyPage/>},
 
             {path: '/login', element: <LoginPage/>},
             {path: '/join', element: <JoinPage/>},

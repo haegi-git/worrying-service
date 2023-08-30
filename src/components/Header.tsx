@@ -12,6 +12,9 @@ const Container = styled.header`
     font-size: 1.5em;
     justify-content: space-between;
     background-color: ${((props)=>props.theme.colors.mainColor)};
+    svg{
+        cursor: pointer;
+    }
 `
 
 export default function Header(){

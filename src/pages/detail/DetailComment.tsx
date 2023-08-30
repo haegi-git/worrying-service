@@ -53,7 +53,7 @@ const CommentContainer = styled.div`
         ul > li > div > span{
         flex:2;
     }
-    ul > li > div > p{
+        ul > li > div > p{
         flex:8;
     }
     }

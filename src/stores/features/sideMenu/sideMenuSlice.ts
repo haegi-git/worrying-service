@@ -7,9 +7,12 @@ export const SideMenuSlice = createSlice({
     reducers:{
         toggleSideMenu:(state)=>{
             return state = !state
+        },
+        closeSideMenu:(state,action)=>{
+            state = action.payload
         }
     }
 })
 
 export default SideMenuSlice.reducer;
-export const { toggleSideMenu } = SideMenuSlice.actions
+export const { toggleSideMenu,closeSideMenu } = SideMenuSlice.actions

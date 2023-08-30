@@ -4,7 +4,7 @@ const Container = styled.div`
     position: fixed;
     top:50%;
     left: 50%;
-    width: 250px;
+    width: 300px;
     height: 100px;
     background-color: aqua;
     transform: translate(-50%,-50%);
@@ -12,6 +12,7 @@ const Container = styled.div`
     text-align: center;
     p{
         padding:15px;
+        padding-bottom: 0px;
     }
     button{
         margin-left:15px;

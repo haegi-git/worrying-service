@@ -18,6 +18,9 @@ const Container = styled.div`
         border: none;
         border: 1px solid black;
     }
+    @media (max-width:768px){
+        width: 100%;
+    }
 `
 
 export default function LoginTextField(){
