@@ -21,7 +21,7 @@ export default function EditContent(){
     const contentValue = useAppSelector((state)=>state.editButton.editContent)
 
     const dispatch = useAppDispatch()
-    const handelContent = (e: any) =>{
+    const handelContent = (e: React.ChangeEvent<HTMLTextAreaElement>) =>{
         const contentVal = e.target.value
         dispatch(onChangeEditContent(contentVal))
     }

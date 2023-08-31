@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 
 import PageContainer from "../../styles/ContainerStyle";
 
-
 import useFetchDetailData from "../../Hooks/useFetchDetailData";
 
 import DetailButton from "./DetailButton";

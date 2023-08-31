@@ -8,6 +8,8 @@ import { onChangeEditCategory,
         onChangeEditTitle } from "../../stores/features/EditButton/editButtonSlice"
 import useDeleteBtn from "../../Hooks/useDeleteBtn"
 import { removePostData } from "../../stores/features/dataState/dataStateSlice"
+import { postType } from "../../types/dataTypes"
+import { DocumentData } from "@firebase/firestore-types"
 
 const Container = styled.div`
     width: 100%;
@@ -26,7 +28,7 @@ const Container = styled.div`
 `
 
 type DetailButtonProps = {
-    detailData: any,
+    detailData: postType | DocumentData,
     category: string,
     id: string,
     userUid: string | null,

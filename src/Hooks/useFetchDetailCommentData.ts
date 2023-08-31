@@ -23,7 +23,12 @@ export default function useFetchDetailCommentData({
                 const fetchedCommentData: commentItemType[] = [];
                 querySnapshot.forEach((doc)=>{
                     const docData = doc.data();
-                    const docPushData = {...docData,id: doc.id};
+                    const docPushData: commentItemType = {
+                        id: doc.id,
+                        comment: docData.comment,
+                        userUid: docData.userUid,
+                        date: docData.date,
+                    };
                     fetchedCommentData.push(docPushData)
             })
             dispatch(setCommentData(fetchedCommentData))

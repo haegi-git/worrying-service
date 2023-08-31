@@ -1,4 +1,4 @@
-export type post = {
+export type postType = {
     content: string,
     title: string,
     userUid: string,

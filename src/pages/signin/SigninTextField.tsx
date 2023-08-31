@@ -3,8 +3,8 @@ import { styled } from "styled-components"
 import { useAppDispatch, useAppSelector } from "../../stores/store"
 import { onChangeSigninEmail, onChangeSigninPassword } from "../../stores/features/signinState/signinStateSlice"
 
-import LoginButtonField from "./SigninButtonField"
 import SigninInput from "./SigninInput"
+import SigninButtonField from "./SigninButtonField"
 
 const Container = styled.div`
     width: 500px;
@@ -70,7 +70,7 @@ export default function SigninTextField(){
                 minLength={3}
             />
 
-            <LoginButtonField />
+            <SigninButtonField />
         </Container>
     )
 }

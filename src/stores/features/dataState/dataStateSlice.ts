@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { post } from "../../../types/dataTypes";
+import { postType } from "../../../types/dataTypes";
 
 type DataStateSliceType = {
-    postsData: post[]
+    postsData: postType[]
 }
 
 const initialState:DataStateSliceType = {

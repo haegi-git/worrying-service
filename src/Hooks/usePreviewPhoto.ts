@@ -7,7 +7,7 @@ export default function usePreviewPhoto(){
 
     const dispatch = useAppDispatch()
 
-    const [previewImg,setPreviewImg] = useState<any>();
+    const [previewImg,setPreviewImg] = useState<string | ArrayBuffer | null>();
 
         const handelPhoto = (e:ChangeEvent<HTMLInputElement>) =>{
             const fileName = e.target.files?.[0]

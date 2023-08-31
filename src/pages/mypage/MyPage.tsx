@@ -74,7 +74,7 @@ export default function MyPage(){
     return(
         <PageContainer>
             <Container>
-                <img src={previewImg ? previewImg : userPhoto} alt="유저 이미지" />
+                <img src={typeof previewImg === "string" ? previewImg : userPhoto} alt="유저 이미지" />
                     {previewImg ? <FontAwesomeIcon onClick={removeImg} icon={faXmark} /> : null}
                 <label htmlFor="userPhoto">이미지 변경</label>
                 <input

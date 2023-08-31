@@ -50,7 +50,7 @@ export default function SignupPhoto(){
 
     return(
         <Container>
-            <img src={previewImg ? previewImg : defaultPhoto} alt="유저 프로필 이미지" />
+            <img src={typeof previewImg === 'string' ? previewImg : defaultPhoto} alt="유저 프로필 이미지" />
             {previewImg ? <FontAwesomeIcon onClick={RemoveImg} icon={faXmark} /> : null}
             <label htmlFor="signupPhoto">이미지 변경하기</label>
             <input

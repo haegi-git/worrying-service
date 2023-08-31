@@ -1,7 +1,8 @@
 import { styled } from "styled-components"
 import { useAppDispatch, useAppSelector } from "../../stores/store"
 import { onChangeEmail, onChangeNickname, onChangePassword } from "../../stores/features/signupState/signupStateSlice"
-import JoinInput from "./SignupInput"
+
+import SignupInput from "./SignupInput"
 
 const Container = styled.div`
     display: flex;
@@ -29,7 +30,7 @@ export default function SignupTextField(){
 
     const dispatch = useAppDispatch()
 
-    const handleJoinInput = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSignupInput = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
 
         switch (field) {
@@ -49,7 +50,7 @@ export default function SignupTextField(){
 
     return(
         <Container>
-            <JoinInput
+            <SignupInput
                 htmlFor="Email"
                 label="이메일을 입력하세요."
                 name="Email"
@@ -57,10 +58,10 @@ export default function SignupTextField(){
                 type="email"
                 placeholder="이메일을 입력하세요."
                 value={singupState.email}
-                onChange={handleJoinInput('email')}
+                onChange={handleSignupInput('email')}
                 minLength={6}
             />
-            <JoinInput
+            <SignupInput
                 htmlFor="Nickname"
                 label="닉네임을 입력하세요."
                 name="Nickname"
@@ -68,10 +69,10 @@ export default function SignupTextField(){
                 type="text"
                 placeholder="닉네임을 입력하세요."
                 value={singupState.nickname}
-                onChange={handleJoinInput('nickname')}
+                onChange={handleSignupInput('nickname')}
                 minLength={3}
             />
-            <JoinInput
+            <SignupInput
                 htmlFor="Password"
                 label="비밀번호를 입력하세요."
                 name="Password"
@@ -79,7 +80,7 @@ export default function SignupTextField(){
                 type="password"
                 placeholder="비밀번호를 입력하세요."
                 value={singupState.password}
-                onChange={handleJoinInput('password')}
+                onChange={handleSignupInput('password')}
                 minLength={6}
             />
         </Container>

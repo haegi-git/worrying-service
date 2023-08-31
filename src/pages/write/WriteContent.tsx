@@ -19,7 +19,7 @@ export default function WriteContent(){
     const contentValue = useAppSelector((state)=>state.writeValue.content)
 
     const dispatch = useAppDispatch()
-    const handelContent = (e: any) =>{
+    const handelContent = (e: React.ChangeEvent<HTMLTextAreaElement>) =>{
         const contentVal = e.target.value
         dispatch(onChangeContent(contentVal))
     }

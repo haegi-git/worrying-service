@@ -2,7 +2,8 @@ import { DocumentData, DocumentSnapshot, doc, getDoc } from "firebase/firestore/
 import { db } from "../api/firebase";
 import { useEffectOnce } from "usehooks-ts";
 import { useState } from "react";
-import { ListItemType } from "../types/types";
+
+import { postType } from "../types/dataTypes";
 
 type useFetchDataProps ={
     dataId: string | undefined,
@@ -11,7 +12,7 @@ type useFetchDataProps ={
 
 export default function useFetchDetailData({collectionName,dataId}: useFetchDataProps) {
 
-    const [data,setData] = useState<DocumentData | ListItemType>()
+    const [data,setData] = useState<DocumentData | postType>()
 
     useEffectOnce(()=>{
         const fetchData = async () => {
