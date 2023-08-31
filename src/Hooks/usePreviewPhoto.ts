@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 
 import { useAppDispatch } from "../stores/store";
-import { onChangePhotoURL } from "../stores/features/JoinButton/joinButtonSlice";
+import { onChangePhotoURL } from "../stores/features/signupState/signupStateSlice";
 
 export default function usePreviewPhoto(){
 

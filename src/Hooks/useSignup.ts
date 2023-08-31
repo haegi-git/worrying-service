@@ -6,20 +6,20 @@ import useDefaultPhoto from "./useDefaultPhoto";
 import { useAppDispatch } from "../stores/store";
 import { onChangeUserNickname, onChangeUserPhoto } from "../stores/features/userState/userStateSlice";
 
-type useJoinBtnProps = {
+type useSignupProps = {
     email: string,
     password: string,
     nickname: string,
     userPhoto: File | undefined
 }
 
-export default function useJoinBtn({email,password,nickname,userPhoto}:useJoinBtnProps){
+export default function useSignup({email,password,nickname,userPhoto}:useSignupProps){
 
     const defaultPhoto = useDefaultPhoto()
 
     const dispatch = useAppDispatch()
 
-    const join = async () =>{
+    const signup = async () =>{
         const auth = getAuth();
         const storage = getStorage()
         try{
@@ -53,6 +53,6 @@ export default function useJoinBtn({email,password,nickname,userPhoto}:useJoinBt
         }
     }
 
-    return join
+    return signup
 
 }

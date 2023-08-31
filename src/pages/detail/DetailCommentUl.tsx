@@ -7,10 +7,11 @@ import { removeCommentData } from "../../stores/features/comment/commentDataSlic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import getDate from "../../utils/getDate";
+import { commentItemType } from "../../types/dataTypes";
 
 type DetailCommentUlType = {
-    category: string | undefined,
-    id: string | undefined,
+    category: string,
+    id: string,
 }
 
 export default function DetailCommentUl({
@@ -49,7 +50,7 @@ export default function DetailCommentUl({
 
     return(
         <ul>
-            {commentData.map((data:any)=>{
+            {commentData.map((data: commentItemType)=>{
                 return(
                     <li key={data.id}>
                         <div>

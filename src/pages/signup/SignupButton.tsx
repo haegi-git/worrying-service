@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { useAppSelector } from "../../stores/store"
-import useJoinBtn from "../../Hooks/useJoinBtn"
+
 import { useNavigate } from "react-router-dom"
+import useSignup from "../../Hooks/useSignup"
 
 const Button = styled.button`
     width: 100%;
@@ -13,23 +14,23 @@ const Button = styled.button`
 `
 
 
-export default function JoinButton(){
+export default function SignupButton(){
 
-    const joinValue = useAppSelector((state)=>state.joinButton)
+    const SignupState = useAppSelector((state)=>state.signupState)
 
     const navigate = useNavigate()
 
-    const email = joinValue.email
-    const password = joinValue.password
-    const nickname = joinValue.nickname
-    const userPhoto = joinValue.photoURL
+    const email = SignupState.email
+    const password = SignupState.password
+    const nickname = SignupState.nickname
+    const userPhoto = SignupState.photoURL
 
     const joinButtonDisabled = email.length < 6 || password.length < 6 || nickname.length < 3
 
-        const joinBtn = useJoinBtn({email,password,nickname,userPhoto})
+        const signupButton = useSignup({email,password,nickname,userPhoto})
 
-        const join = () =>{
-            joinBtn().then(()=>{
+        const signup = () =>{
+            signupButton().then(()=>{
                 navigate('/')
             }).catch((error)=>{
                 console.error(error)
@@ -38,6 +39,6 @@ export default function JoinButton(){
     return(
         <Button
         disabled={joinButtonDisabled}
-         onClick={join}>회원 가입</Button>
+         onClick={signup}>회원 가입</Button>
     )
 }

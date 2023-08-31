@@ -5,7 +5,7 @@ import usePreviewPhoto from '../../Hooks/usePreviewPhoto'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from '../../stores/store'
-import { onChangePhotoURL } from '../../stores/features/JoinButton/joinButtonSlice'
+import { onChangePhotoURL } from '../../stores/features/signupState/signupStateSlice'
 
 const Container = styled.div`
     width: 15rem;
@@ -34,7 +34,7 @@ const Container = styled.div`
 `
 
 
-export default function JoinPhoto(){
+export default function SignupPhoto(){
 
     const defaultPhoto = useDefaultPhoto()
 
@@ -52,10 +52,10 @@ export default function JoinPhoto(){
         <Container>
             <img src={previewImg ? previewImg : defaultPhoto} alt="유저 프로필 이미지" />
             {previewImg ? <FontAwesomeIcon onClick={RemoveImg} icon={faXmark} /> : null}
-            <label htmlFor="joinPhoto">이미지 변경하기</label>
+            <label htmlFor="signupPhoto">이미지 변경하기</label>
             <input
              type="file"
-              id="joinPhoto"
+              id="signupPhoto"
                style={{display:'none'}}
                onChange={handelPhoto}/>
         </Container>

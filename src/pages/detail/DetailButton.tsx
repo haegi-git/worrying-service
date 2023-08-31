@@ -27,8 +27,8 @@ const Container = styled.div`
 
 type DetailButtonProps = {
     detailData: any,
-    category: string | undefined,
-    id: string | undefined,
+    category: string,
+    id: string,
     userUid: string | null,
 }
 

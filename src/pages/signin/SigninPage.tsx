@@ -1,12 +1,11 @@
 import PageContainer from "../../styles/ContainerStyle";
+import SigninTextField from "./SigninTextField";
 
-import LoginTextField from "./LoginTextField";
-
-export default function LoginPage(){
+export default function SigninPage(){
 
     return(
         <PageContainer>
-            <LoginTextField/>
+            <SigninTextField/>
         </PageContainer>
     )
 }

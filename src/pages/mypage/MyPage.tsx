@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePreviewPhoto from "../../Hooks/usePreviewPhoto";
-import { onChangeNickname, onChangePhotoURL } from "../../stores/features/JoinButton/joinButtonSlice";
+import { onChangePhotoURL } from "../../stores/features/signupState/signupStateSlice";
 import { useAppDispatch, useAppSelector } from "../../stores/store";
 import PageContainer from "../../styles/ContainerStyle";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";

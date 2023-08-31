@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const JoinButtonSlice = createSlice({
-    name : 'joinButtonSlice',
+export const SignupStateSlice = createSlice({
+    name : 'SignupStateSlice',
     initialState : {
         email: '',
         nickname: '',
@@ -24,9 +24,9 @@ export const JoinButtonSlice = createSlice({
     }
 })
 
-export default JoinButtonSlice.reducer;
+export default SignupStateSlice.reducer;
 export const {
     onChangeEmail,
     onChangeNickname,
     onChangePassword,
-onChangePhotoURL} = JoinButtonSlice.actions
+onChangePhotoURL} = SignupStateSlice.actions

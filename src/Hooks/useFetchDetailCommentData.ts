@@ -3,10 +3,11 @@ import { db } from "../api/firebase";
 import { useEffectOnce } from "usehooks-ts";
 import { useAppDispatch } from "../stores/store";
 import { setCommentData } from "../stores/features/comment/commentDataSlice";
+import { commentItemType } from "../types/dataTypes";
 
 type useFetchDataProps ={
-    collectionName: any,
-    docId: any
+    collectionName: string,
+    docId: string
 }
 
 export default function useFetchDetailCommentData({
@@ -19,10 +20,10 @@ export default function useFetchDetailCommentData({
         const fetchData = async () => {
             try{
                 const querySnapshot = await getDocs(collection(db,collectionName,docId,'comment'));
-                const fetchedCommentData: any = [];
+                const fetchedCommentData: commentItemType[] = [];
                 querySnapshot.forEach((doc)=>{
                     const docData = doc.data();
-                    const docPushData = {id: doc.id, ...docData};
+                    const docPushData = {...docData,id: doc.id};
                     fetchedCommentData.push(docPushData)
             })
             dispatch(setCommentData(fetchedCommentData))

@@ -1,4 +1,4 @@
-type LoginInputProps = {
+type SignupInputProps = {
     htmlFor: string,
     label: string,
     name: string,
@@ -10,7 +10,7 @@ type LoginInputProps = {
     minLength: number,
 }
 
-export default function LoginInput({
+export default function SignupInput({
     htmlFor,
     label,
     name,
@@ -20,7 +20,7 @@ export default function LoginInput({
     value,
     onChange,
     minLength,
-}:LoginInputProps){
+}:SignupInputProps){
 
     const isBelowMinLength = value.length < minLength;
     return(

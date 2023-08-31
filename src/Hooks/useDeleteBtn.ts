@@ -2,15 +2,15 @@ import { collection, deleteDoc, doc, getDocs } from "firebase/firestore/lite";
 import { db } from "../api/firebase";
 
 type useDeleteCommentBtnProps = {
-    category: any,
-    id: any,
-    commentCollection?: any,
-    commentId?: any
+    category: string,
+    id: string,
+    commentCollection?: string,
+    commentId?: string
 }
 
 type useDeletePostBtnProps = {
-    category: any,
-    id: any
+    category: string,
+    id: string,
 }
 
 export default function useDeleteBtn(){

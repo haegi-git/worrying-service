@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 import { useAppDispatch, useAppSelector } from "../../stores/store"
-import { onChangeEmail, onChangeNickname, onChangePassword } from "../../stores/features/JoinButton/joinButtonSlice"
-import JoinInput from "./JoinInput"
+import { onChangeEmail, onChangeNickname, onChangePassword } from "../../stores/features/signupState/signupStateSlice"
+import JoinInput from "./SignupInput"
 
 const Container = styled.div`
     display: flex;
@@ -23,11 +23,9 @@ const Container = styled.div`
     }
 `
 
-export default function JoinTextField(){
+export default function SignupTextField(){
 
-    const joinValue = useAppSelector((state)=>state.joinButton)
-
-    console.log(joinValue)
+    const singupState = useAppSelector((state)=>state.signupState)
 
     const dispatch = useAppDispatch()
 
@@ -58,7 +56,7 @@ export default function JoinTextField(){
                 id="Email"
                 type="email"
                 placeholder="이메일을 입력하세요."
-                value={joinValue.email}
+                value={singupState.email}
                 onChange={handleJoinInput('email')}
                 minLength={6}
             />
@@ -69,7 +67,7 @@ export default function JoinTextField(){
                 id="Nickname"
                 type="text"
                 placeholder="닉네임을 입력하세요."
-                value={joinValue.nickname}
+                value={singupState.nickname}
                 onChange={handleJoinInput('nickname')}
                 minLength={3}
             />
@@ -80,7 +78,7 @@ export default function JoinTextField(){
                 id="Password"
                 type="password"
                 placeholder="비밀번호를 입력하세요."
-                value={joinValue.password}
+                value={singupState.password}
                 onChange={handleJoinInput('password')}
                 minLength={6}
             />

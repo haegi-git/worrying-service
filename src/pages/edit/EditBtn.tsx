@@ -21,18 +21,22 @@ export default function EditBtn(){
 
     const editData = useAppSelector((state)=>state.editButton)
 
-    const getUserState = useAppSelector((state)=>state.userState)
+    const userState = useAppSelector((state)=>state.userState)
 
     const [editState,setEditState] = useState<boolean>(false)
 
     const {id,category} = useParams()
+
+    const categoryId = category ?? ''
+    const itemId = id ?? ''
 
     const navigate = useNavigate()
 
     const createBtn = useEditBtn;
 
     const handelEditBtn = async () => {
-        await createBtn(editData, getUserState, category, id);
+        await createBtn(
+            {editData, userState, category: categoryId, id: itemId});
         navigate(`/${category}`)
     }
 

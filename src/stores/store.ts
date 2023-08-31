@@ -4,13 +4,14 @@ import { SideMenuSlice } from "./features/sideMenu/sideMenuSlice";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { WriteValueSlice } from "./features/writeValue/writeValueSlice";
-import { JoinButtonSlice } from "./features/JoinButton/joinButtonSlice";
-import { LoginButtonSlice } from "./features/LoginButton/loginButtonSlice";
+
+import { SigninStateSlice } from "./features/signinState/signinStateSlice";
 import { UserStateSlice } from "./features/userState/userStateSlice";
 import { EditButtonSlice } from "./features/EditButton/editButtonSlice";
 import { CommentValueSlice } from "./features/comment/commentValueSlice";
 import { DataStateSlice } from "./features/dataState/dataStateSlice";
 import { CommentDataSLice } from "./features/comment/commentDataSlice";
+import { SignupStateSlice } from "./features/signupState/signupStateSlice";
 
 export const store = configureStore({
   middleware: getDefaultMiddleware({
@@ -19,8 +20,8 @@ export const store = configureStore({
   reducer:{
     sideMenu:SideMenuSlice.reducer,
     writeValue:WriteValueSlice.reducer,
-    joinButton:JoinButtonSlice.reducer,
-    loginButton:LoginButtonSlice.reducer,
+    signupState:SignupStateSlice.reducer,
+    signinState:SigninStateSlice.reducer,
     userState:UserStateSlice.reducer,
     editButton:EditButtonSlice.reducer,
     commentValue:CommentValueSlice.reducer,

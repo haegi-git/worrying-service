@@ -22,7 +22,7 @@ export default function DetailPage(){
     const detailData = useFetchDetailData({collectionName: category, dataId: id})
 
     const userState = useAppSelector((state)=>state.userState)
-    useFetchDetailCommentData({ collectionName : category, docId: id })
+    useFetchDetailCommentData({ collectionName : categoryId, docId: itemId })
 
 
     if (!detailData) {
@@ -44,8 +44,8 @@ return (
         {userState.userUid === detailData.userUid ?
         <DetailButton
          detailData={detailData}
-          category={category}
-           id={id}
+          category={categoryId}
+           id={itemId}
            userUid={userState.userUid}/> : null}
 
         <DetailComment category={categoryId} id={itemId}/>

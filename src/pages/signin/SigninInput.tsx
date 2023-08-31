@@ -1,4 +1,4 @@
-type JoinInputProps = {
+type SigninInputProps = {
     htmlFor: string,
     label: string,
     name: string,
@@ -10,7 +10,7 @@ type JoinInputProps = {
     minLength: number,
 }
 
-export default function JoinInput({
+export default function SigninInput({
     htmlFor,
     label,
     name,
@@ -20,7 +20,7 @@ export default function JoinInput({
     value,
     onChange,
     minLength,
-}:JoinInputProps){
+}:SigninInputProps){
 
     const isBelowMinLength = value.length < minLength;
     return(

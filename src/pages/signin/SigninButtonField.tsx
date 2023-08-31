@@ -20,16 +20,16 @@ const Container = styled.div`
     }
 `
 
-export default function LoginButtonField(){
+export default function SigninButtonField(){
     const navigate = useNavigate()
 
-    const loginValue = useAppSelector((state)=>state.loginButton)
+    const signinState = useAppSelector((state)=>state.signinState)
 
     const auth = getAuth();
 
-    const {email,password} = loginValue
+    const {email,password} = signinState
 
-    const loginButton = () =>{
+    const signinButton = () =>{
         signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
             const user = userCredential.user
             navigate('/')
@@ -43,10 +43,10 @@ export default function LoginButtonField(){
 
     return(
         <Container>
-            <button onClick={loginButton}>
+            <button onClick={signinButton}>
                 로그인
             </button>
-            <button onClick={()=>{navigate('/join')}}>
+            <button onClick={()=>{navigate('/signup')}}>
                 회원 가입
             </button>
         </Container>
