@@ -48,14 +48,19 @@ export default function DetailCommentUl({
         dispatch(removeCommentData(removeCommentId))
     }
 
+    const sortedCommentData = [...commentData];
+
+    sortedCommentData.sort((a, b) => b.date - a.date);
+
+
     return(
         <ul>
-            {commentData.map((data: commentItemType)=>{
+            {sortedCommentData.map((data: commentItemType)=>{
                 return(
                     <li key={data.id}>
                         <div>
 
-                            <span>거북이 {getDate(data.date)}</span>
+                            <span>{data.commentName} {getDate(data.date)}</span>
 
                             <p>{data.comment}</p>
 

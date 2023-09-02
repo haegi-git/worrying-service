@@ -28,6 +28,7 @@ export default function useFetchDetailCommentData({
                         comment: docData.comment,
                         userUid: docData.userUid,
                         date: docData.date,
+                        commentName: docData.commentName
                     };
                     fetchedCommentData.push(docPushData)
             })

@@ -21,7 +21,10 @@ export default function DetailPage(){
     const detailData = useFetchDetailData({collectionName: category, dataId: id})
 
     const userState = useAppSelector((state)=>state.userState)
+    const commentData = useAppSelector((state)=>state.commentData)
     useFetchDetailCommentData({ collectionName : categoryId, docId: itemId })
+
+    console.log(commentData)
 
 
     if (!detailData) {

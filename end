@@ -1,0 +1,29 @@
+[33mcommit ed632e6f4b3ae2f3234bf5b6f5acb5483229101e[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m
+Author: haegi <b_haegi@naver.com>
+Date:   Thu Aug 31 17:57:29 2023 +0900
+
+    any로 잡아주었던 타입 수정
+
+[33mcommit d1ddfd41d885e48402e98fa2d4973c718c25a6a5[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: haegi <b_haegi@naver.com>
+Date:   Thu Aug 31 13:28:38 2023 +0900
+
+    타입 고치는 중
+
+[33mcommit 7f4a60867a8fcc098623fc5a0934af876a46e206[m
+Author: haegi <b_haegi@naver.com>
+Date:   Thu Aug 31 00:34:32 2023 +0900
+
+    마이 페이지 생성 중
+
+[33mcommit db88ec7a50c9c43f42aed22184f1bfd244e24b38[m
+Author: haegi <b_haegi@naver.com>
+Date:   Wed Aug 30 18:36:43 2023 +0900
+
+    게시글과 댓글 날짜 업데이트
+
+[33mcommit b4ace8cf7baf0d6b2a9857b557e1ae72abf9668f[m[33m ([m[1;31mupstream/main[m[33m, [m[1;31mupstream/Haegi[m[33m, [m[1;31morigin/Haegi[m[33m, [m[1;32mHaegi[m[33m)[m
+Author: haegi <b_haegi@naver.com>
+Date:   Wed Aug 30 17:46:34 2023 +0900
+
+    프로젝트 업로드

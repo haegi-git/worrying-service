@@ -10,7 +10,7 @@ type DetailCommentTextFieldProps = {
     handelCreateBtn: () => void
 }
 
-const Container = styled.div<{commentValue: string}>`
+const Container = styled.div<{$commentValue: string}>`
     width: 90%;
     margin: auto;
     display: flex;
@@ -31,7 +31,7 @@ const Container = styled.div<{commentValue: string}>`
         border-radius: 50%;
         background-color: ${((props)=>props.theme.colors.mainColor)};
         border: ${((props)=>props.theme.border.grayBorder)};
-        opacity: ${((props)=>props.commentValue.length === 0 ? 0.7 : 1)};
+        opacity: ${((props)=>props.$commentValue.length === 0 ? 0.7 : 1)};
         transition: all 1s;
         margin-left: 5px;
     }
@@ -44,7 +44,7 @@ export default function DetailCommentTextField({
     const dispatch = useAppDispatch()
 
     return(
-        <Container commentValue={commentValue}>
+        <Container $commentValue={commentValue}>
             <TextareaAutosize
                 value={commentValue}
                 onChange={(e)=>{

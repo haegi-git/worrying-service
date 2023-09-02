@@ -12,5 +12,6 @@ export type commentItemType = {
     comment: string,
     userUid: string,
     id:string,
-    date:number
+    date:number,
+    commentName: string,
 }

@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../stores/store"
 import DetailCommentUl from "./DetailCommentUl"
 import DetailCommentTextField from "./DetailCommentTextField"
 import useWrite from "../../Hooks/useWrite"
+import anonymousAnimal from "../../utils/anonymousAnimal"
 
 type DetailCommentProps = {
     category: string,
@@ -75,23 +76,36 @@ export default function DetailComment({category,id}:DetailCommentProps){
 
         if(commentValue.length === 0){
             alert('댓글을 입력해주세요.')
-        }else{
+        }else {
+            const userUid = userState.userUid;
+            const userCommentData = commentData.find((item) => item.userUid === userUid);
+            let commentName;
+            if (userCommentData) {
+              // 이미 작성한 댓글이 있는 경우
+              commentName = userCommentData.commentName;
+            } else {
+              // 새로운 댓글을 작성하는 경우
+              commentName = anonymousAnimal(); // 새로운 commentName 생성
+              // Firestore에 새로운 댓글 추가 코드 (필요한 부분 추가)
+            }
             createComment.commentWrite({
-                detailCollection:category,
-                detailId:id,
+                detailCollection: category,
+                detailId: id,
                 commentValue: commentValue,
                 userState: userState,
                 date: timestamp,
-                })
-                const newComment = {
-                    comment: commentValue,
-                    userUid: userState.userUid,
-                    date: timestamp
-                }
-                dispatch(setCommentData([...commentData,newComment])) // 댓글 작성하면 스토어에 임의로 바로 추가해주는 코드
-                dispatch(onChangeCommentValue('')) // 댓글 작성 시 인풋 초기화
+                commentName: commentName,
+              });
+            const newComment = {
+              comment: commentValue,
+              userUid: userUid,
+              date: timestamp,
+              commentName: commentName,
+            };
+            dispatch(setCommentData([...commentData, newComment])); // 댓글 작성하면 스토어에 추가
+            dispatch(onChangeCommentValue('')); // 댓글 작성 시 인풋 초기화
+          }
         }
-    }
 
     return(
         <CommentContainer>
