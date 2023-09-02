@@ -1,8 +1,8 @@
 import { styled } from "styled-components"
 import { useNavigate } from "react-router-dom"
 import { useAppSelector } from "../stores/store"
-import { post } from "../types/dataTypes"
 import getDate from "../utils/getDate"
+import { postType } from "../types/dataTypes"
 
 const ContainerUl = styled.ul`
     width: 100%;
@@ -40,13 +40,17 @@ export default function ListUl(){
 
     const listData = useAppSelector((state)=>state.dataState.postsData)
 
-    const listOnClick = (item: post) =>{
+    const listOnClick = (item: postType) =>{
         navigate(`/${item.category}/${item.id}`)
     }
 
+    const sortedListData = [...listData]
+
+    sortedListData.sort((a,b)=> b.date - a.date)
+
     return(
             <ContainerUl>
-                {listData.map((item)=>{
+                {sortedListData.map((item)=>{
                     return(
                         <li key={item.id} onClick={()=>{
                             listOnClick(item)
