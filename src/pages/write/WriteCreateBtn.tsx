@@ -1,8 +1,9 @@
 import { styled } from "styled-components"
 
-import { useAppSelector } from "../../stores/store";
+import { useAppDispatch, useAppSelector } from "../../stores/store";
 import { useNavigate } from "react-router-dom";
 import useWrite from "../../Hooks/useWrite";
+import { onChangeContent, onChangeTitle } from "../../stores/features/writeValue/writeValueSlice";
 
 const Container = styled.div`
     width: 100%;
@@ -24,6 +25,8 @@ export default function WriteCreateBtn(){
 
     const userState = useAppSelector((state)=>state.userState)
 
+    const dispatch = useAppDispatch()
+
     const createBtn = useWrite();
 
     const timestamp = Date.now()
@@ -35,6 +38,10 @@ export default function WriteCreateBtn(){
             writeValue: writeValue,
             userState: userState,
             date: timestamp})
+
+            dispatch(onChangeTitle(''))
+            dispatch(onChangeContent(''))
+
         navigate(`/${writeValue.category}`)
     }
     return(

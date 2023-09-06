@@ -17,8 +17,8 @@ type DetailCommentUlType = {
 export default function DetailCommentUl({
     category,id
 }: DetailCommentUlType){
-    const commentData = useAppSelector((state)=>state.commentData.commentData);
     const userUid = useAppSelector((state)=>state.userState.userUid)
+    const commentData = useAppSelector((state)=>state.commentData.commentData)
 
     const dispatch = useAppDispatch()
 
@@ -47,11 +47,11 @@ export default function DetailCommentUl({
         setRemoveCommentPopup(false)
         dispatch(removeCommentData(removeCommentId))
     }
-
+    // commentData 배열을 복사합니다.
     const sortedCommentData = [...commentData];
 
-    sortedCommentData.sort((a, b) => b.date - a.date);
-
+// date 값을 기준으로 정렬합니다.
+    sortedCommentData.sort((a, b) => a.date - b.date);
 
     return(
         <ul>

@@ -1,29 +1,27 @@
 import { collection, getDocs } from "firebase/firestore/lite";
 import { db } from "../api/firebase";
 import { useEffectOnce } from "usehooks-ts";
-import { useAppDispatch } from "../stores/store";
-import { setPostsData, setTotalPosts } from "../stores/features/dataState/dataStateSlice";
+import { useState } from "react";
 
 type useFetchDataProps ={
     collectionName: string
 }
 
-export default function useFetchData({collectionName}: useFetchDataProps) {
+export default function useFetchLatestData({collectionName}: useFetchDataProps) {
 
-    const dispatch = useAppDispatch()
+    const [fetchedData, setFetchedData] = useState([])
 
     useEffectOnce(()=>{
         const fetchData = async () => {
             try{
                 const querySnapshot = await getDocs(collection(db,collectionName));
-                const fetchedData: any = [];
+                const data: any = [];
                 querySnapshot.forEach((doc)=>{
                     const docData = doc.data();
                     const docPushData = {id: doc.id, ...docData};
-                    fetchedData.push(docPushData)
+                    data.push(docPushData)
             });
-            dispatch(setTotalPosts(fetchedData.length)) // 총 게시물 갯수 보내주기
-            dispatch(setPostsData(fetchedData)) // 데이터 보내주기
+            setFetchedData(data)
         }catch(error){
                 console.error(`${error}에러뜨는중`)
             }
@@ -31,4 +29,5 @@ export default function useFetchData({collectionName}: useFetchDataProps) {
 
         fetchData()
     });
+    return fetchedData
 }

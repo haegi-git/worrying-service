@@ -37,7 +37,7 @@ const Container = styled.div`
 export default function SignupPhoto(){
 
     const defaultPhoto = useDefaultPhoto()
-
+    
     const dispatch = useAppDispatch()
 
     const {previewImg,setPreviewImg,handelPhoto} = usePreviewPhoto()
@@ -50,7 +50,8 @@ export default function SignupPhoto(){
 
     return(
         <Container>
-            <img src={typeof previewImg === 'string' ? previewImg : defaultPhoto} alt="유저 프로필 이미지" />
+            <img src={typeof previewImg === 'string' ? previewImg : defaultPhoto} alt="유저 프로필 이미지"
+            referrerPolicy='no-referrer' />
             {previewImg ? <FontAwesomeIcon onClick={RemoveImg} icon={faXmark} /> : null}
             <label htmlFor="signupPhoto">이미지 변경하기</label>
             <input

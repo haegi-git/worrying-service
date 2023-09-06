@@ -7,6 +7,7 @@ import DetailCommentUl from "./DetailCommentUl"
 import DetailCommentTextField from "./DetailCommentTextField"
 import useWrite from "../../Hooks/useWrite"
 import anonymousAnimal from "../../utils/anonymousAnimal"
+import { useEffect, useState } from "react"
 
 type DetailCommentProps = {
     category: string,
@@ -68,13 +69,17 @@ export default function DetailComment({category,id}:DetailCommentProps){
     const commentValue = useAppSelector((state)=>state.commentValue.commentValue)
     const userState = useAppSelector((state)=>state.userState)
 
+    const [sortedCommentData,setSortedCommentData] = useState(commentData)
+
+    
+
     const createComment = useWrite()
 
     const timestamp = Date.now()
 
     const handelCreateBtn = async () =>{
 
-        if(commentValue.length === 0){
+        if(commentValue.trim().length === 0){
             alert('댓글을 입력해주세요.')
         }else {
             const userUid = userState.userUid;
@@ -106,7 +111,6 @@ export default function DetailComment({category,id}:DetailCommentProps){
             dispatch(onChangeCommentValue('')); // 댓글 작성 시 인풋 초기화
           }
         }
-
     return(
         <CommentContainer>
 

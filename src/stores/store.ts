@@ -12,6 +12,7 @@ import { CommentValueSlice } from "./features/comment/commentValueSlice";
 import { DataStateSlice } from "./features/dataState/dataStateSlice";
 import { CommentDataSLice } from "./features/comment/commentDataSlice";
 import { SignupStateSlice } from "./features/signupState/signupStateSlice";
+import { LatestDataSlice } from "./features/latestData/latestDataSlice";
 
 export const store = configureStore({
   middleware: getDefaultMiddleware({
@@ -27,6 +28,7 @@ export const store = configureStore({
     commentValue:CommentValueSlice.reducer,
     dataState:DataStateSlice.reducer,
     commentData:CommentDataSLice.reducer,
+    latestData:LatestDataSlice.reducer
   }
 })
 

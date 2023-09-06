@@ -6,6 +6,7 @@ const Container = styled.div`
     width:100%;
     height: 500px;
     textarea{
+        resize: none;
         height: 100%;
         width: 100%;
         border: 1px solid black;
