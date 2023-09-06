@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { styled } from "styled-components"
 import useSideMenuBtn from "../Hooks/useSideMenuBtn"
 import SideMenu from "./SideMenu"
+import { Link } from "react-router-dom"
 
 const Container = styled.header`
     position: relative;
@@ -24,7 +25,7 @@ export default function Header(){
 
     return(
         <Container>
-            <span>익명 고민소</span>
+            <Link to='/'>익명 고민소</Link>
             <FontAwesomeIcon onClick={sideMenuBtn} icon={faBars} />
             <SideMenu />
         </Container>

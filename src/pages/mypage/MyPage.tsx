@@ -6,10 +6,10 @@ import PageContainer from "../../styles/ContainerStyle";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { styled } from "styled-components";
 import { onChangeUserNickname } from "../../stores/features/userState/userStateSlice";
+import { auth } from "../../api/firebase";
+import { onAuthStateChanged, updateProfile } from "firebase/auth";
 
 const Container = styled.div`
-    width: 500px;
-    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,6 +48,11 @@ const Container = styled.div`
         border:${((props)=>props.theme.border.grayBorder)};
         cursor: pointer;
     }
+    @media (max-width:768px){
+        input{
+            width: 70%;
+        }
+    }
 `
 
 export default function MyPage(){
@@ -71,6 +76,17 @@ export default function MyPage(){
         dispatch(onChangeUserNickname(e.target.value))
     }
 
+    const onClickProfile = () =>{
+        onAuthStateChanged(auth,(user)=>{
+            if(user){
+                updateProfile(user,{
+                    displayName: userNickname
+                })
+                console.log(user)
+            }
+        })
+    }
+
     return(
         <PageContainer>
             <Container>
@@ -86,7 +102,7 @@ export default function MyPage(){
                 value={userNickname}
                 onChange={handelNickname} />
 
-                <button>
+                <button onClick={onClickProfile}>
                     변경하기
                 </button>
             </Container>

@@ -57,7 +57,9 @@ export default function SideMenuUserInfo(){
     return(
         <Container>
             <div>
-                <img src={userPhoto} alt="테스트이미지" />
+                <img
+                referrerPolicy="no-referrer"
+                 src={userPhoto} alt="테스트이미지" />
                 <span>{userState.userNickname}</span>
             </div>
 
