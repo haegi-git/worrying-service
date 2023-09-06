@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePreviewPhoto from "../../Hooks/usePreviewPhoto";
-import { onChangePhotoURL } from "../../stores/features/signupState/signupStateSlice";
+
 import { useAppDispatch, useAppSelector } from "../../stores/store";
 import PageContainer from "../../styles/ContainerStyle";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { styled } from "styled-components";
-import { onChangeUserNickname } from "../../stores/features/userState/userStateSlice";
+
 import { auth } from "../../api/firebase";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
+import { onChangeProfileUserNickname, onChangeProfileUserPhoto } from "../../stores/features/profileState/profileStateSlice";
+import { onChangeUserNickname } from "../../stores/features/userState/userStateSlice";
 
 const Container = styled.div`
     display: flex;
@@ -57,32 +59,35 @@ const Container = styled.div`
 
 export default function MyPage(){
 
-    const userState = useAppSelector((state)=>state.userState)
+    const userState = useAppSelector((state)=>state.profileState)
 
     const dispatch = useAppDispatch()
 
-    const userPhoto = userState.userPhoto || '';
+    const userPhoto = userState.profileUserPhoto || '';
 
-    const userNickname = userState.userNickname || '';
+    const userNickname = userState.profileUserNickname || '';
 
     const {previewImg,setPreviewImg,handelPhoto} = usePreviewPhoto()
 
     const removeImg = () =>{
         setPreviewImg(undefined)
-        dispatch(onChangePhotoURL(undefined))
+        dispatch(onChangeProfileUserPhoto(undefined))
     }
 
     const handelNickname = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        dispatch(onChangeUserNickname(e.target.value))
+        dispatch(onChangeProfileUserNickname(e.target.value))
     }
 
     const onClickProfile = () =>{
         onAuthStateChanged(auth,(user)=>{
-            if(user){
+            if(user?.uid === userState.profileUserUid){
                 updateProfile(user,{
-                    displayName: userNickname
+                    displayName: userNickname,
                 })
+                dispatch(onChangeUserNickname(userNickname))
                 console.log(user)
+            }else{
+                alert('로그인 상태가 아닌거같습니다.')
             }
         })
     }
