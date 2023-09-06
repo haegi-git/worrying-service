@@ -14,16 +14,6 @@ import { getAuth } from 'firebase/auth'
 //   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 // };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDVU3Se80c6ZjThdSh8pvaD70a9L54biX8",
-  authDomain: "worrying-service.firebaseapp.com",
-  projectId: "worrying-service",
-  storageBucket: "worrying-service.appspot.com",
-  messagingSenderId: "986192499120",
-  appId: "1:986192499120:web:f789216fc6618d9552c675",
-  measurementId: "G-G0ST5WH0T7"
-};
-
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app)
