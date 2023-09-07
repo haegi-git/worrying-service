@@ -5,7 +5,8 @@ export type postType = {
     category: string,
     id:string,
     post:string,
-    date: number
+    date: number,
+    postName:string
 }
 
 export type commentItemType = {
@@ -13,5 +14,5 @@ export type commentItemType = {
     userUid: string,
     id:string,
     date:number,
-    commentName: string,
+    commentName: string
 }

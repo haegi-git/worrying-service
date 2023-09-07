@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const WriteValueSlice = createSlice({
     name : 'WriteValueSlice',
     initialState : {
-        title: '제목인데용?',
-        content: '본문인데용?',
+        title: '',
+        content: '',
         category: ''
     },
     reducers:{

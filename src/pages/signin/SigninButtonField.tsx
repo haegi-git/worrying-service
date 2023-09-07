@@ -12,7 +12,7 @@ const Container = styled.div`
         width: 150px;
         padding: 7px;
         border: 1px solid black;
-        background-color: #fff;
+        background-color: ${((props)=>props.theme.colors.mainColor)};
         border-radius: 15px;
         text-align: center;
         margin-top:15px;
@@ -31,9 +31,7 @@ export default function SigninButtonField(){
 
     const signinButton = () =>{
         signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
-            const user = userCredential.user
             navigate('/')
-            console.log(user)
         }).catch((error)=>{
             console.error(error)
         })

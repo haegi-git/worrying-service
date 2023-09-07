@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { styled } from "styled-components"
+import { useAppSelector } from "../stores/store"
 
 const WriteButton = styled.button`
     width: 100%;
@@ -12,10 +13,19 @@ const WriteButton = styled.button`
 
 export default function WriteBtn(){
     const navigate = useNavigate()
-    return(
-        <WriteButton onClick={()=>{
+
+    const userState = useAppSelector((state)=>state.userState)
+
+    const writeOnClick = () =>{
+        if(userState.userUid){
             navigate('/write')
-        }}>
+        }else{
+            alert('로그인을 해야합니다.')
+        }
+    }
+    
+    return(
+        <WriteButton onClick={writeOnClick}>
             글 작성
         </WriteButton>
     )

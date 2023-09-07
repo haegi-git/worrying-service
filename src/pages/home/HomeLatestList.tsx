@@ -1,6 +1,7 @@
 import { styled } from "styled-components"
 import { postType } from "../../types/dataTypes"
 import getDate from "../../utils/getDate"
+import { useNavigate } from "react-router-dom"
 
 const Container = styled.div`
     width: 40%;
@@ -63,6 +64,8 @@ export default function HomeLatestList({
 
     const sliceData = sortedData?.slice(0,5)
 
+    const navigate = useNavigate()
+
 
     if(!listData){
         return <h1>불러오는 중</h1>
@@ -73,7 +76,9 @@ export default function HomeLatestList({
                 <ul>
                     {sliceData?.map((item:any)=>{
                         return(
-                            <li key={item.id}>
+                            <li onClick={()=>{
+                                navigate(`/${item.category}/${item.id}`)
+                            }} key={item.id}>
                                 <span>{item.title}</span>
 
                                 <span>{getDate(item.date)}</span>

@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore/lite";
+import { addDoc, collection, documentId } from "firebase/firestore/lite";
 import { db } from "../api/firebase";
 
 import { userType } from "../types/userTypes";
@@ -7,7 +7,8 @@ import { postWriteType } from "../types/writeTypes";
 type postWritePropsType = {
     writeValue: postWriteType,
     userState: userType,
-    date: number
+    date: number,
+    postName:string | null
 }
 
 type commentWritePropsType = {
@@ -16,14 +17,15 @@ type commentWritePropsType = {
     detailCollection: string,
     detailId: string,
     date: number,
-    commentName: string,
+    commentName: string | null,
 }
 export default function useWrite(){
 
     const postWrite = async ({
         writeValue,
         userState,
-        date
+        date,
+        postName
     }:postWritePropsType) =>{
         try{
             const docRef = await addDoc(collection(db,writeValue.category),{
@@ -31,7 +33,8 @@ export default function useWrite(){
                 content: writeValue.content,
                 category: writeValue.category,
                 userUid: userState.userUid,
-                date: date
+                date: date,
+                postName: postName
             })
 
             return docRef
@@ -53,9 +56,8 @@ export default function useWrite(){
                 comment: commentValue,
                 userUid: userState.userUid,
                 date: date,
-                commentName: commentName
+                commentName: commentName,
             })
-
             return docRef
         } catch(error){
             console.error(`${error}에러 발생 했따`)

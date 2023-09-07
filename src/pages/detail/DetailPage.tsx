@@ -38,7 +38,9 @@ return (
         <DetailContent
         title={detailData.title}
         content={detailData.content}
-        date={detailData.date}/>
+        date={detailData.date}
+        postName={detailData.postName}
+        category={category}/>
 
         {userState.userUid === detailData.userUid ?
         <DetailButton
@@ -47,7 +49,12 @@ return (
            id={itemId}
            userUid={userState.userUid}/> : null}
 
-        <DetailComment category={categoryId} id={itemId}/>
+        <DetailComment
+         category={categoryId}
+          id={itemId}
+          detailUserUid={detailData.userUid}
+          postName={detailData.postName}
+         />
 
 
     </PageContainer>

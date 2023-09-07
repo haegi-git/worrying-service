@@ -7,7 +7,7 @@ import useSignup from "../../Hooks/useSignup"
 const Button = styled.button`
     width: 100%;
     border: 1px solid black;
-    background-color: red;
+    background-color: ${((props)=>props.theme.colors.mainColor)};
     border-radius: 15px;
     padding: 5px;
     margin-top:15px;
@@ -16,7 +16,7 @@ const Button = styled.button`
 
 export default function SignupButton(){
 
-    const SignupState = useAppSelector((state)=>state.signupState)
+    const SignupState = useAppSelector((state:any)=>state.signupState)
 
     const navigate = useNavigate()
 
