@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 
 import { useAppDispatch } from "../stores/store";
 import { onChangePhotoURL } from "../stores/features/signupState/signupStateSlice";
+import { onChangeProfileUserPhotoFile } from "../stores/features/profileState/profileStateSlice";
 
 export default function usePreviewPhoto(){
 
@@ -14,6 +15,7 @@ export default function usePreviewPhoto(){
 
             if(fileName){
                 dispatch(onChangePhotoURL(fileName))
+                dispatch(onChangeProfileUserPhotoFile(fileName))
 
                 const reader = new FileReader();
                 reader.readAsDataURL(fileName)

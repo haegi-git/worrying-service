@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 import { useNavigate } from "react-router-dom"
 import getDate from "../utils/getDate"
 import { postType } from "../types/dataTypes"
+import { useAppSelector } from "../stores/store"
 
 const ContainerUl = styled.ul`
     width: 100%;
@@ -43,6 +44,8 @@ export default function ListUl({
 
     const navigate = useNavigate()
 
+    const userState = useAppSelector((state)=>state.userState)
+
     const listOnClick = (item: postType) =>{
         navigate(`/${item.category}/${item.id}`)
     }
@@ -50,16 +53,43 @@ export default function ListUl({
     return(
             <ContainerUl>
                 {displayedItems.map((item)=>{
-                    return(
-                        <li key={item.id} onClick={()=>{
-                            listOnClick(item)
-                        }}>
-                    <span>
-                        {item.title}
-                    </span>
-                    <span>{getDate(item.date)}</span>
-                </li>
-                    )
+                    if(item.category === 'secret'){
+                        if(item.userUid === userState.userUid){
+                            return(
+                                <li key={item.id} onClick={()=>{
+                                    listOnClick(item)
+                                }}>
+                            <span>
+                                {item.title}
+                            </span>
+                            <span>{getDate(item.date)}</span>
+                            </li>
+                            )
+                        }else{
+                            return(
+                                <li key={item.id} onClick={()=>{
+                                    listOnClick(item)
+                                }}>
+                            <span>
+                                비밀 게시글입니다.
+                            </span>
+                            <span>{getDate(item.date)}</span>
+                            </li>
+                            )
+                        }
+                    }else{
+                        return(
+
+                            <li key={item.id} onClick={()=>{
+                                listOnClick(item)
+                            }}>
+                        <span>
+                            {item.title}
+                        </span>
+                        <span>{getDate(item.date)}</span>
+                        </li>
+                        )
+                    }
                 })}
             </ContainerUl>
     )

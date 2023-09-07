@@ -51,7 +51,7 @@ export default function DetailCommentUl({
     const sortedCommentData = [...commentData];
 
 // date 값을 기준으로 정렬합니다.
-    sortedCommentData.sort((a, b) => a.date - b.date);
+    sortedCommentData.sort((a, b) => b.date - a.date);
 
     return(
         <ul>

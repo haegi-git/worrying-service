@@ -7,9 +7,7 @@ import SigninInput from "./SigninInput"
 import SigninButtonField from "./SigninButtonField"
 
 const Container = styled.div`
-    width: 500px;
     margin: auto;
-    background-color: azure;
 
     input{
         width: 100%;
@@ -18,8 +16,14 @@ const Container = styled.div`
         border: none;
         border: 1px solid black;
     }
-    @media (max-width:768px){
-        width: 100%;
+    @media (max-width:768px) {
+        width: 90%;
+    }
+    @media (min-width:769px) {
+        width: 80%;
+    }
+    @media (min-width:1200px) {
+        width:50%
     }
 `
 

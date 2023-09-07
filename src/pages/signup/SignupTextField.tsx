@@ -36,6 +36,7 @@ export default function SignupTextField(){
         switch (field) {
             case 'email':
                 dispatch(onChangeEmail(value));
+                console.log(singupState.photoURL)
                 break;
             case 'nickname':
                 dispatch(onChangeNickname(value));

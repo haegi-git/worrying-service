@@ -18,17 +18,23 @@ const Container = styled.div`
     }
 `
 
-type test = {
+type DetailContentProps = {
     title: string,
     content: string,
-    date: number
+    date: number,
+    postName:string,
+    category:string | undefined
 }
 
-export default function DetailContent({title,content,date}:test){
+export default function DetailContent({
+    title,content,date,postName,category}:DetailContentProps){
     return(
         <Container>
-            <h1>{title}1</h1>
-            <span>익명의 작성자 - {getDate(date)}</span>
+            <h1>{title}</h1>
+            {category === 'free' ?
+             <span>{postName} - {getDate(date)}</span> :
+             <span>익명의 {postName} - {getDate(date)}</span>
+            }
             <p>{content}</p>
         </Container>
     )

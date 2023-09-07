@@ -7,9 +7,10 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { styled } from "styled-components";
 
 import { auth } from "../../api/firebase";
-import { onAuthStateChanged, updateProfile } from "firebase/auth";
+import { User, updateProfile } from "firebase/auth";
 import { onChangeProfileUserNickname, onChangeProfileUserPhoto } from "../../stores/features/profileState/profileStateSlice";
-import { onChangeUserNickname } from "../../stores/features/userState/userStateSlice";
+import { onChangeUserNickname, onChangeUserPhoto } from "../../stores/features/userState/userStateSlice";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const Container = styled.div`
     display: flex;
@@ -17,6 +18,14 @@ const Container = styled.div`
     align-items: center;
     margin: auto;
     position: relative;
+    div{
+        width: 150px;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+    }
     img{
         width: 150px;
         height: 150px;
@@ -59,45 +68,75 @@ const Container = styled.div`
 
 export default function MyPage(){
 
-    const userState = useAppSelector((state)=>state.profileState)
+    const profileState = useAppSelector((state)=>state.profileState)
+    const userState = useAppSelector((state)=>state.userState)
 
     const dispatch = useAppDispatch()
 
-    const userPhoto = userState.profileUserPhoto || '';
+    const storage = getStorage()
 
-    const userNickname = userState.profileUserNickname || '';
+    const userPhoto = profileState.profileUserPhoto || '';
+    const userPhotoFile:any = profileState.profileUserPhotoFile
+    const userNickname = profileState.profileUserNickname || '';
 
     const {previewImg,setPreviewImg,handelPhoto} = usePreviewPhoto()
 
     const removeImg = () =>{
-        setPreviewImg(undefined)
-        dispatch(onChangeProfileUserPhoto(undefined))
+        setPreviewImg(userPhoto)
+        dispatch(onChangeProfileUserPhoto(userState.userPhoto))
     }
 
     const handelNickname = (e: React.ChangeEvent<HTMLInputElement>) =>{
         dispatch(onChangeProfileUserNickname(e.target.value))
     }
 
-    const onClickProfile = () =>{
-        onAuthStateChanged(auth,(user)=>{
-            if(user?.uid === userState.profileUserUid){
-                updateProfile(user,{
-                    displayName: userNickname,
-                })
-                dispatch(onChangeUserNickname(userNickname))
-                console.log(user)
+    const onClickProfile = async () =>{
+        try{
+            if(userState.userUid){
+                if(userPhotoFile){
+                    const userPhotoUploadRef = ref(storage,`userPhoto/${userNickname}${userPhotoFile.name}`)
+                    await uploadBytes(userPhotoUploadRef, userPhotoFile);
+
+                    getDownloadURL(userPhotoUploadRef).then((url)=>{
+                        const currentUser: User | null = auth.currentUser;
+                        if(currentUser){
+                            updateProfile(currentUser,{
+                                displayName:userNickname,
+                                photoURL:url
+                            })
+                            dispatch(onChangeUserNickname(userNickname))
+                            dispatch(onChangeUserPhoto(url))
+                            alert('프로필이 변경되었습니다.')
+                        }
+                    })
+                }else{
+                    const currentUser: User | null = auth.currentUser;
+                    if(currentUser){
+                        updateProfile(currentUser,{
+                            displayName:userNickname,
+                        })
+                        dispatch(onChangeUserNickname(userNickname))
+                        alert('프로필이 변경되었습니다.')
+                    }
+                }
+
             }else{
-                alert('로그인 상태가 아닌거같습니다.')
+                alert('로그인 상태가 아닌 것 같습니다.')
             }
-        })
+
+        }catch(error){
+            console.error(error)
+        }
     }
 
     return(
         <PageContainer>
             <Container>
+                <div>
                 <img src={typeof previewImg === "string" ? previewImg : userPhoto} alt="유저 이미지" />
                     {previewImg ? <FontAwesomeIcon onClick={removeImg} icon={faXmark} /> : null}
                 <label htmlFor="userPhoto">이미지 변경</label>
+                </div>
                 <input
                     id="userPhoto"
                     type="file"

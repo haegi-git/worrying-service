@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import useSideMenuBtn from "../Hooks/useSideMenuBtn"
 
 const CategoryUl = styled.ul`
     margin-top: 20px;
@@ -17,11 +18,12 @@ const CategoryUl = styled.ul`
 `
 
 export default function SideMenuLogin(){
+    const sideMenuClose = useSideMenuBtn()
     return(
         <CategoryUl>
 
-            <li><Link to='/signin'>로그인</Link></li>
-            <li><Link to='/signup'>회원 가입</Link></li>
+            <li onClick={sideMenuClose}><Link to='/signin'>로그인</Link></li>
+            <li onClick={sideMenuClose}><Link to='/signup'>회원 가입</Link></li>
 
         </CategoryUl>
     )

@@ -32,17 +32,52 @@ export default function WriteCreateBtn(){
     const timestamp = Date.now()
 
     const navigate = useNavigate()
+    console.log(writeValue.category)
 
     const handelCreateBtn = async () =>{
-        await createBtn.postWrite({
-            writeValue: writeValue,
-            userState: userState,
-            date: timestamp})
+        if(writeValue.category === 'null' || ''){
+            alert('카테고리를 선택 해주세요.')
+        }
 
-            dispatch(onChangeTitle(''))
-            dispatch(onChangeContent(''))
+        if(!userState.userUid){
+            alert('로그인이 필요합니다.')
+        }
+        
+        if(writeValue.category === 'anonymous'){
+            await createBtn.postWrite({
+                writeValue: writeValue,
+                userState: userState,
+                date: timestamp,
+                postName: '작성자'})
 
-        navigate(`/${writeValue.category}`)
+                dispatch(onChangeTitle(''))
+                dispatch(onChangeContent(''))
+
+            navigate(`/${writeValue.category}`)
+        }else if(writeValue.category === 'secret'){
+            await createBtn.postWrite({
+                writeValue: writeValue,
+                userState: userState,
+                date: timestamp,
+                postName: '작성자'})
+
+                dispatch(onChangeTitle(''))
+                dispatch(onChangeContent(''))
+
+            navigate(`/${writeValue.category}`)
+        }else if(writeValue.category === 'free'){
+            await createBtn.postWrite({
+                writeValue: writeValue,
+                userState: userState,
+                date: timestamp,
+                postName: userState.userNickname})
+
+                dispatch(onChangeTitle(''))
+                dispatch(onChangeContent(''))
+
+            navigate(`/${writeValue.category}`)
+        }
+
     }
     return(
         <Container>

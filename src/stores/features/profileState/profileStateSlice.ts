@@ -5,7 +5,8 @@ export const ProfileStateSlice = createSlice({
     initialState : {
         profileUserUid: null,
         profileUserNickname: null,
-        profileUserPhoto: null
+        profileUserPhoto: null,
+        profileUserPhotoFile: undefined,
     },
     reducers:{
         onChangeProfileUserUid:(state,action)=>{
@@ -16,6 +17,9 @@ export const ProfileStateSlice = createSlice({
         },
         onChangeProfileUserPhoto:(state,action)=>{
             state.profileUserPhoto = action.payload
+        },
+        onChangeProfileUserPhotoFile:(state,action)=>{
+            state.profileUserPhotoFile = action.payload
         }
     }
 })
@@ -24,4 +28,5 @@ export default ProfileStateSlice.reducer;
 export const {
     onChangeProfileUserUid,
     onChangeProfileUserNickname,
-    onChangeProfileUserPhoto} = ProfileStateSlice.actions
+    onChangeProfileUserPhoto,
+    onChangeProfileUserPhotoFile} = ProfileStateSlice.actions

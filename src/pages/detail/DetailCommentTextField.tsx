@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 import { onChangeCommentValue } from "../../stores/features/comment/commentValueSlice"
-import { useAppDispatch } from "../../stores/store"
+import { useAppDispatch, useAppSelector } from "../../stores/store"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import TextareaAutosize from 'react-textarea-autosize';
@@ -43,13 +43,23 @@ export default function DetailCommentTextField({
 }:DetailCommentTextFieldProps){
     const dispatch = useAppDispatch()
 
+    const userState = useAppSelector((state)=>state.userState)
+
     return(
         <Container $commentValue={commentValue}>
-            <TextareaAutosize
+            {userState.userUid ? <TextareaAutosize
+                placeholder="욕설 및 비방은 하지말아주세요."
                 value={commentValue}
                 onChange={(e)=>{
                dispatch(onChangeCommentValue(e.target.value));
-            }}/>
+            }}/> :
+            <TextareaAutosize
+                disabled={true}
+                placeholder="로그인이 필요합니다."
+                value={commentValue}
+                onChange={(e)=>{
+               dispatch(onChangeCommentValue(e.target.value));
+            }}/>}
             <button onClick={handelCreateBtn}>
                 <FontAwesomeIcon icon={faCheck}/>
             </button>
