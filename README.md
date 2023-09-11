@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+<div align=center><h1>익명 고민 상담 서비스 (https://portfolio-bc4d1.web.app/) </h1></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align=center>
+고민이 많은 세상에 익명으로라도 고민을 토해내고 싶을 때를 위해<Br>
+고민 서비스의 주제로 프로젝트를 진행해보았습니다.
+</div>
 
-## Available Scripts
+# 사용한 기술
 
-In the project directory, you can run:
++ TypeScript
++ React
++ Redux Toolkit
++ React router
++ Firebase
++ Styled Components
 
-### `npm start`
+주된 기술로는 React와 TypeScript를 사용을 하였고 백엔드 서버 활용을 위해 Firebase를 사용하였습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 프로젝트 요약
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+살면서 많은 고민들이 존재하고 그걸 맘 놓고 털어놓지 못할 때 생기는 답답함을<br>
+익명으로나마 고민을 뱉어내어 해소를 할 수 있도록 만들어 본 프로젝트입니다.<br>
+주 기능은 작성자와 댓글 작성자들이 모두 익명으로 나타나는 익명 게시판이며<br>
+그 외의 다른 카테고리로 비밀 게시판과 잡담소를 만들어 두었습니다.<br>
+비밀 게시판은 아무에게도 알릴 생각이 없고 그냥 어딘가에 뱉고싶을 때 고해성사를 하듯 만들어 둔 게시판이며<br>
+잡담소는 여러 일반 게시판 및 커뮤니티 처럼 자유롭게 작성하고 놀 수 있는 공간으로 만들어 두었습니다.
 
-### `npm test`
+### 폴더 구성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+src/api (파이어베이스를 관리해 줄 폴더)<br>
+src/pages (페이지를 담아둔 폴더)<br>
+src/components (다용도로 사용이 될 컴포넌트를 담아둔 폴더)<br>
+src/Hooks (커스텀 훅을 담아둔 폴더)<br>
+src/stores (리덕스 툴킷을 관리할 파일들을 담아 둔 폴더)<br>
+src/styles (스타일 관련 및 전역 스타일을 담아 둔 폴더)<br>
+src/types (타입을 미리 지정해줄 수 있을 때 사용 한 폴더)<br>
+src/utils (기능적인 로직을 담아 둔 폴더)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 23-09-11
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+대부분의 기능들은 완성을 해주었고 자잘한 버그들이 남아있습니다.<br>
+로그인 및 회원가입, 카테고리 별 기능, 글 생성 및 삭제 및 수정, 익명으로 표시해주기<br>
+댓글 생성 및 삭제 프로필 변경 등...<br>
+기초 작업은 모두 끝내놓았으나 자잘한 버그들과 디자인적인 부분은 아직 완성하지 못한 상태입니다.<br>
+현재 알게 된 버그는 댓글을 작성 후 바로 삭제하려했을 때 지워지지않는 부분<br>
